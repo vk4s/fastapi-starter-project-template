@@ -1,0 +1,15 @@
+web
+|--- code
+|    |--- __init__.py
+|    |--- app.py
+|--- server.py
+
+
+
+* authentication
+
+fastapi -> framework
+-- starlette -> (asyncio)
+uvicorn -> asgi (async server)
+
+
