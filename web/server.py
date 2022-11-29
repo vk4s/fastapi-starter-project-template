@@ -9,4 +9,4 @@ if __name__ == '__main__':
     #  second app is app.py file inside app folder
     #  third app is the name of fastapi instance: app=FastAPI(0)
 
-    uvicorn.run('app.app:app', host='0.0.0.0', port=8000, reload=True)
+    uvicorn.run('code.app:fastapiInstance', host='0.0.0.0', port=8000, reload=True)
