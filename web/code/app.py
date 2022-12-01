@@ -1,37 +1,24 @@
-from fastapi import FastAPI
-
-from code.data import get_data
-
-# import additional code from other modules
-from code.database.users import UsersModel
-
+from fastapi import FastAPI, Request
+# from fastapi.templating import Jinja2Templates
 
 # instance (object) of FastAPI class
 fastapiInstance = FastAPI()
 
+# templates = Jinja2Templates(directory='templates/')
+
+
 # routes
 @fastapiInstance.get('/', tags=['index'])
-async def index() -> dict:
-    return {'Hello': 'world'}
+async def index(request: Request):
+    return "Hello"
+    # return templates.TemplateResponse('home.html', context= {'request': request})
 
 
-@fastapiInstance.get('/about', tags=['about'])
-async def about() -> dict:
-    msg = 'Hi, I am V. I am a web developer.'
-    profilePic = 'https://images.pexels.com/photos/1677107/pexels-photo-1677107.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'  # noqa: E501
+@fastapiInstance.get('/add', tags=['add'])
+async def add(request: Request, num1, num2) -> dict:
+    print(num1, num2)
+    sum_of_numbers = int(num1) + int(num2)
 
     return {
-        'msg': msg,
-        'profile_picture': profilePic
+        'sum': sum_of_numbers
     }
-
-
-@fastapiInstance.get('/todos', tags=['todos'])
-async def todos() -> list:
-
-    todos = get_data(filename='./code/data.json')
-    print(todos)
-
-    return todos
-
-
